@@ -4,264 +4,703 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Keynote Speakers | ASREEM 2026</title>
-  <link href="style.css" rel="stylesheet">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&family=Playfair+Display:wght@400;500;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
   <style>
-    body {
-      font-family: 'Roboto', sans-serif;
+    :root {
+      --primary: #2e7d32;
+      --primary-dark: #1b5e20;
+      --primary-light: #66bb6a;
+      --secondary: #004d40;
+      --accent: #ff5722;
+      --light: #f5f5f5;
+      --dark: #212121;
+      --gray: #757575;
+      --white: #ffffff;
+      --shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+      --transition: all 0.3s ease;
+    }
+    
+    * {
       margin: 0;
       padding: 0;
-      background-color: #ffffff;
-      color: #212121;
+      box-sizing: border-box;
     }
     
-    
-    section {
-      padding: 30px 20px;
+    body {
+      font-family: 'Poppins', sans-serif;
+      color: var(--dark);
+      line-height: 1.6;
+      overflow-x: hidden;
+      background-color: var(--light);
     }
-    h2 {
-      font-size: 24px;
-      margin-bottom: 20px;
-      color: #103c68;
+    h1{font-family: 'Playfair Display', serif;
+      font-weight: 600;
+      /* color: var(--primary-dark); */
     }
 
-    /* .speaker-container{background-color: #f5f5f5;}
+     h2, h3, h4 {
+      font-family: 'Playfair Display', serif;
+      font-weight: 600;
+      color: var(--primary-dark);
+    }
+    
+    a {
+      text-decoration: none;
+      color: inherit;
+      transition: var(--transition);
+    }
+
+    /* Header & Navigation */
+    header {
+      height: 50vh;
+      position: relative;
+      overflow: hidden;
+      background: linear-gradient(135deg, rgba(46, 125, 50, 0.9) 0%, rgba(0, 77, 64, 0.9) 100%);
+      color: var(--white);
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+      text-align: center;
+    }
+    
+    .nav-bar {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      padding: 1.5rem 5%;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      background-color: rgba(255, 255, 255, 0.95);
+      box-shadow: var(--shadow);
+      z-index: 1000;
+      transition: var(--transition);
+    }
+    
+    .nav-bar.scrolled {
+      padding: 1rem 5%;
+      background-color: rgba(255, 255, 255, 0.98);
+    }
+    
+    .nav-bar a {
+      margin: 0 1rem;
+      padding: 0.5rem 1rem;
+      font-weight: 500;
+      color: var(--dark);
+      border-radius: 4px;
+      transition: var(--transition);
+    }
+    
+    .nav-bar a:hover {
+      color: var(--primary);
+      transform: translateY(-2px);
+    }
+    
+    .nav-bar a.active {
+      background-color: var(--primary);
+      color: var(--white);
+    }
+
+    /* Dropdown Menu */
+    .dropdown {
+      position: relative;
+      display: inline-block;
+    }
+    
+    .dropdown-content {
+      display: none;
+      position: absolute;
+      background-color: var(--white);
+      min-width: 200px;
+      box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
+      z-index: 1;
+      border-radius: 4px;
+      right: 0;
+    }
+    
+    .dropdown-content a {
+      color: var(--dark);
+      padding: 12px 16px;
+      text-decoration: none;
+      display: block;
+      text-align: left;
+    }
+    
+    .dropdown-content a:hover {
+      background-color: rgba(46, 125, 50, 0.1);
+    }
+    
+    .dropdown:hover .dropdown-content {
+      display: block;
+    }
+    
+    .dropdown-btn {
+      cursor: pointer;
+      margin: 0 1rem;
+      padding: 0.5rem 1rem;
+      font-weight: 500;
+      color: var(--dark);
+      border-radius: 4px;
+      transition: var(--transition);
+    }
+    
+    .dropdown-btn:hover {
+      color: var(--primary);
+      transform: translateY(-2px);
+    }
+    
+    .dropdown-btn i {
+      margin-left: 5px;
+    }
+
+    /* Page Header */
+    .page-header {
+      text-align: center;
+      padding: 0 5%;
+      opacity: 0;
+      transform: translateY(20px);
+      animation: fadeInUp 1s ease forwards 0.3s;
+    }
+    
+    .page-header h1 {
+      font-size: 2.8rem;
+      margin-bottom: 1rem;
+      line-height: 1.2;
+      text-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
+    }
+
+    /* Speakers Section */
+    .speakers-section {
+      padding: 5rem 10%;
+      position: relative;
+      background-color: var(--white);
+    }
+    
+    .speakers-container {
+      max-width: 1200px;
+      margin: 0 auto;
+    }
+    
     .speaker-list {
       display: flex;
       flex-wrap: wrap;
-      gap: 20px;
+      justify-content: center;
+      gap: 2rem;
     }
-    .speaker {
-      flex: 1 1 300px;
-      background-color: #f5f5f5;
-      padding: 20px;
-      border-radius: 8px;
-      box-shadow: 0 2px 4px rgba(0,0,0,0.1);
-    }
-    .speaker h3 {
-      margin: 0 0 10px;
-      font-size: 18px;
-      color: #002855;
-    }
-    .speaker p {
-      font-size: 14px;
-      margin: 0;
-    } */
-
-    .speakers-section {
-  padding: 40px 20px;
-  background-color: #f8f8f8;
-  text-align: center;
-}
-
-.speakers-container h2 {
-  font-size: 28px;
-  margin-bottom: 30px;
-  color: #333;
-}
-
-.speaker-list {
-  display: flex;
-  flex-wrap: wrap;
-  justify-content: center;
-  gap: 30px;
-}
-
-.speaker {
-  width: 200px;
-  background-color: white;
-  border-radius: 8px;
-  box-shadow: 0 2px 8px rgba(0,0,0,0.1);
-  padding: 15px;
-  transition: transform 0.3s ease;
-}
-
-.speaker:hover {
-  transform: translateY(-5px);
-}
-
-.speaker img {
-  width: 100%;
-  height: 200px;
-  object-fit: cover;
-  border-radius: 6px;
-  margin-bottom: 10px;
-}
-
-.speaker h3 {
-  margin: 10px 0 5px;
-  font-size: 16px;
-  font-weight: bold;
-  color: #222;
-}
-
-.speaker p {
-  margin: 0;
-  font-size: 14px;
-  color: #555;
-}
-
-
     
+    .speaker {
+      flex: 1 1 250px;
+      max-width: 280px;
+      background: var(--white);
+      border-radius: 10px;
+      overflow: hidden;
+      box-shadow: var(--shadow);
+      transition: var(--transition);
+      transform: translateY(20px);
+      opacity: 0;
+      animation: fadeInUp 0.8s ease forwards;
+    }
+    
+    .speaker:nth-child(1) { animation-delay: 0.2s; }
+    .speaker:nth-child(2) { animation-delay: 0.3s; }
+    .speaker:nth-child(3) { animation-delay: 0.4s; }
+    .speaker:nth-child(4) { animation-delay: 0.5s; }
+    .speaker:nth-child(5) { animation-delay: 0.6s; }
+    .speaker:nth-child(6) { animation-delay: 0.7s; }
+    .speaker:nth-child(7) { animation-delay: 0.8s; }
+    .speaker:nth-child(8) { animation-delay: 0.9s; }
+    .speaker:nth-child(9) { animation-delay: 1.0s; }
+    .speaker:nth-child(10) { animation-delay: 1.1s; }
+    .speaker:nth-child(11) { animation-delay: 1.2s; }
+    .speaker:nth-child(12) { animation-delay: 1.3s; }
+    .speaker:nth-child(13) { animation-delay: 1.4s; }
+    .speaker:nth-child(14) { animation-delay: 1.5s; }
+    .speaker:nth-child(15) { animation-delay: 1.6s; }
+    .speaker:nth-child(16) { animation-delay: 1.7s; }
+    .speaker:nth-child(17) { animation-delay: 1.8s; }
+    .speaker:nth-child(18) { animation-delay: 1.9s; }
+    
+    .speaker:hover {
+      transform: translateY(-10px);
+      box-shadow: 0 10px 20px rgba(0, 0, 0, 0.15);
+    }
+    
+    .speaker img {
+      width: 100%;
+      height: 250px;
+      object-fit: cover;
+      transition: var(--transition);
+    }
+    
+    .speaker:hover img {
+      transform: scale(1.05);
+    }
+    
+    .speaker-info {
+      padding: 1.5rem;
+    }
+    
+    .speaker h3 {
+      font-size: 1.2rem;
+      margin-bottom: 0.5rem;
+      color: var(--primary-dark);
+    }
+    
+    .speaker p {
+      font-size: 0.9rem;
+      color: var(--gray);
+    }
+
+    /* Footer */
+    .footer {
+      background: linear-gradient(135deg, var(--primary-dark) 0%, var(--secondary) 100%);
+      padding: 4rem 10%;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      color: var(--white);
+      position: relative;
+    }
+    
+    .footer::before {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background: url('https://www.transparenttextures.com/patterns/connected.png');
+      opacity: 0.1;
+      pointer-events: none;
+    }
+    
+    .footer-section {
+      width: 100%;
+      max-width: 1200px;
+      margin-bottom: 2rem;
+    }
+    
+    .footer-section h2 {
+      text-align: center;
+      margin-bottom: 2rem;
+      font-size: 2rem;
+      color: var(--white);
+      position: relative;
+      padding-bottom: 1rem;
+    }
+    
+    .footer-section h2::after {
+      content: '';
+      position: absolute;
+      bottom: 0;
+      left: 50%;
+      transform: translateX(-50%);
+      width: 80px;
+      height: 3px;
+      background-color: var(--white);
+    }
+    
+    .footer-section-contact-grid {
+      display: flex;
+      justify-content: space-between;
+      flex-wrap: wrap;
+      gap: 2rem;
+    }
+    
+    .contact-column {
+      flex: 1;
+      min-width: 300px;
+    }
+    
+    .contact-column p {
+      margin: 1rem 0;
+      line-height: 1.8;
+      display: flex;
+      align-items: center;
+    }
+    
+    .contact-column i {
+      margin-right: 1rem;
+      font-size: 1.2rem;
+      color: rgba(255, 255, 255, 0.8);
+    }
+    
+    .contact-column a {
+      color: var(--white);
+      transition: var(--transition);
+      display: flex;
+      align-items: center;
+    }
+    
+    .contact-column a:hover {
+      color: var(--accent);
+      transform: translateX(5px);
+    }
+    
+    .copyright {
+      margin-top: 3rem;
+      text-align: center;
+      font-size: 0.9rem;
+      color: rgba(255, 255, 255, 0.7);
+    }
+    
+    /* Animations */
+    @keyframes fadeInUp {
+      from {
+        opacity: 0;
+        transform: translateY(20px);
+      }
+      to {
+        opacity: 1;
+        transform: translateY(0);
+      }
+    }
+    
+    @keyframes fadeInScale {
+      from {
+        opacity: 0;
+        transform: scale(0.8);
+      }
+      to {
+        opacity: 1;
+        transform: scale(1);
+      }
+    }
+    
+    @keyframes shine {
+      to {
+        transform: translateX(100%) rotate(30deg);
+      }
+    }
+    
+    /* Responsive Design */
+    @media (max-width: 1024px) {
+      .page-header h1 {
+        font-size: 2.2rem;
+      }
+    }
+    
+    @media (max-width: 768px) {
+      .nav-bar {
+        flex-wrap: wrap;
+        padding: 1rem 5%;
+      }
+      
+      .nav-bar a, .dropdown-btn {
+        margin: 0.3rem;
+        padding: 0.3rem 0.6rem;
+        font-size: 0.9rem;
+      }
+      
+      .page-header h1 {
+        font-size: 1.8rem;
+      }
+      
+      .dropdown-content {
+        right: auto;
+        left: 0;
+      }
+    }
+    
+    @media (max-width: 480px) {
+      .page-header h1 {
+        font-size: 1.5rem;
+      }
+      
+      .speaker {
+        flex: 1 1 100%;
+      }
+    }
+    
+    /* Scroll Reveal Animation */
+    .reveal {
+      position: relative;
+      opacity: 0;
+      transition: all 1s ease;
+    }
+    
+    .reveal.active {
+      opacity: 1;
+    }
+    
+    .active.fade-bottom {
+      animation: fade-bottom 1s ease-in;
+    }
+    
+    .active.fade-left {
+      animation: fade-left 1s ease-in;
+    }
+    
+    .active.fade-right {
+      animation: fade-right 1s ease-in;
+    }
+    
+    @keyframes fade-bottom {
+      0% {
+        transform: translateY(50px);
+        opacity: 0;
+      }
+      100% {
+        transform: translateY(0);
+        opacity: 1;
+      }
+    }
+    
+    @keyframes fade-left {
+      0% {
+        transform: translateX(-100px);
+        opacity: 0;
+      }
+      100% {
+        transform: translateX(0);
+        opacity: 1;
+      }
+    }
+    
+    @keyframes fade-right {
+      0% {
+        transform: translateX(100px);
+        opacity: 0;
+      }
+      100% {
+        transform: translateX(0);
+        opacity: 1;
+      }
+    }
   </style>
 </head>
 <body>
+
   <header>
-
-      <nav class="nav-bar">
-        <a href="index.html">Home</a>
-        <a href="keynote.html">Keynote Speakers</a>
-        <a href="abstracts.html">Call for Abstracts</a>
-        <a href="dates_fees.html">Dates and Fees</a>
-        <a href="register.html">Register</a>
-        <a href="#">Publications</a>
-        <a href="organizing.html">Organizing Committee</a>
-        <a href="National_Advisory.html">National Advisory</a>
-        <a href="international.html">International Advisory</a>
-      </nav>
-
-      
-      
-  
-  
-      <h1>Keynote Speakers</h1>
+    <nav class="nav-bar">
+      <a href="index.html">Home</a>
+      <a href="keynote.html" class="active">Keynote Speakers</a>
+      <a href="abstracts.html">Call for Abstracts</a>
+      <a href="dates_fees.html">Dates and Fees</a>
+      <div class="dropdown">
+        <div class="dropdown-btn">More <i class="fas fa-chevron-down"></i></div>
+        <div class="dropdown-content">
+          <a href="register.html">Register</a>
+          <a href="#">Publications</a>
+          <a href="organizing.html">Organizing Committee</a>
+          <a href="National_Advisory.html">National Advisory</a>
+          <a href="international.html">International Advisory</a>
+        </div>
+      </div>
+    </nav>
     
-  
-  </header>
-  <section class="speakers-section">
-  <div class="speakers-container">
-    <!-- <h2>Distinguished Speakers</h2> -->
-    <div class="speaker-list">
-
-      <div class="speaker">
-        <img src="s_venkata_mohan.jpg" alt="Dr. S. Venkata Mohan">
-        <h3>Dr. S. Venkata Mohan</h3>
-        <p>Director, CSIR-NEERI, Nagpur</p>
-      </div>
-
-      <div class="speaker">
-        <img src="shishir_sinha.jpg" alt="Dr. Shishir Sinha">
-        <h3>Dr. Shishir Sinha</h3>
-        <p>Director-General, CIPET, Govt of India</p>
-      </div>
-
-      <div class="speaker">
-        <img src="kk_pant.jpg" alt="Dr. K. K. Pant">
-        <h3>Dr. K. K. Pant</h3>
-        <p>Director, IIT Roorkee</p>
-      </div>
-
-      <div class="speaker">
-        <img src="makarand_ghangrekar.jpg" alt="Dr. Makarand Ghangrekar">
-        <h3>Dr. Makarand Ghangrekar</h3>
-        <p>Director, NIT Puducherry</p>
-      </div>
-
-      <div class="speaker">
-        <img src="deepak_pant.jpg" alt="Dr. Deepak Pant">
-        <h3>Dr. Deepak Pant</h3>
-        <p>Senior Scientist, VITO, Belgium</p>
-      </div>
-
-      <div class="speaker">
-        <img src="aniruddha_pandit.jpg" alt="Prof. Aniruddha B. Pandit">
-        <h3>Prof. Aniruddha B. Pandit</h3>
-        <p>Vice-Chancellor, ICT Mumbai</p>
-      </div>
-
-      <div class="speaker">
-        <img src="sameer_jadhav.jpg" alt="Dr. Sameer Jadhav">
-        <h3>Dr. Sameer Jadhav</h3>
-        <p>Professor, IIT Bombay</p>
-      </div>
-
-      <div class="speaker">
-        <img src="anil_verma.jpg" alt="Prof. Anil Verma">
-        <h3>Prof. Anil Verma</h3>
-        <p>Professor, IIT Delhi</p>
-      </div>
-
-      <div class="speaker">
-        <img src="sesha_talpa_sai.jpg" alt="Dr. P. Sesha Talpa Sai">
-        <h3>Dr. P. Sesha Talpa Sai</h3>
-        <p>Professor, IIT Madras</p>
-      </div>
-
-      <div class="speaker">
-        <img src="shriram_sonawane.jpg" alt="Dr. Shriram Sonawane">
-        <h3>Dr. Shriram Sonawane</h3>
-        <p>Professor, VNIT Nagpur</p>
-      </div>
-
-      <div class="speaker">
-        <img src="anand_kishor_kola.jpg" alt="Dr. Anand Kishor Kola">
-        <h3>Dr. Anand Kishor Kola</h3>
-        <p>Professor, NIT Warangal</p>
-      </div>
-
-      <div class="speaker">
-        <img src="manish_vashishtha.jpg" alt="Dr. Manish Vashishtha">
-        <h3>Dr. Manish Vashishtha</h3>
-        <p>Professor, MNIT Jaipur</p>
-      </div>
-
-      <div class="speaker">
-        <img src="sushil_kumar.jpg" alt="Dr. Sushil Kumar">
-        <h3>Dr. Sushil Kumar</h3>
-        <p>Associate Professor, MNNIT Allahabad</p>
-      </div>
-
-      <div class="speaker">
-        <img src="sunil_patil.jpg" alt="Dr. Sunil A. Patil">
-        <h3>Dr. Sunil A. Patil</h3>
-        <p>Associate Professor, IISER Mohali</p>
-      </div>
-
-      <div class="speaker">
-        <img src="deepak_jadhav.jpg" alt="Dr. Deepak Jadhav">
-        <h3>Dr. Deepak Jadhav</h3>
-        <p>Eminent Scientist, KMOU, South Korea</p>
-      </div>
-
-      <div class="speaker">
-        <img src="parag_sadgir.jpg" alt="Dr. Parag Sadgir">
-        <h3>Dr. Parag Sadgir</h3>
-        <p>Professor, COEP Pune</p>
-      </div>
-
-      <div class="speaker">
-        <img src="hiren_rawal.jpg" alt="Dr. Hiren Rawal">
-        <h3>Dr. Hiren Rawal</h3>
-        <p>Eminent Scientist, CSIR-CSMCRI, Bhavnagar</p>
-      </div>
-
-      <div class="speaker">
-        <img src="mahesh_dharne.jpg" alt="Mahesh S. Dharne">
-        <h3>Mahesh S. Dharne</h3>
-        <p>Eminent Scientist, CSIR-NCL, Pune</p>
-      </div>
-
+    <div class="page-header">
+      <h1>Keynote Speakers</h1>
     </div>
-  </div>
-</section>
+  </header>
 
-  <br>*2
+  <section class="speakers-section reveal fade-bottom">
+    <div class="speakers-container">
+      <div class="speaker-list">
+        <div class="speaker">
+          <img src="s_venkata_mohan.webp" alt="Dr. S. Venkata Mohan">
+          <div class="speaker-info">
+            <h3>Dr. S. Venkata Mohan</h3>
+            <p>Director, CSIR-NEERI, Nagpur</p>
+          </div>
+        </div>
+
+        <div class="speaker">
+          <img src="shishir_sinha.jpg" alt="Dr. Shishir Sinha">
+          <div class="speaker-info">
+            <h3>Dr. Shishir Sinha</h3>
+            <p>Director-General, CIPET, Govt of India</p>
+          </div>
+        </div>
+
+        <div class="speaker">
+          <img src="kk_pant.jpg" alt="Dr. K. K. Pant">
+          <div class="speaker-info">
+            <h3>Dr. K. K. Pant</h3>
+            <p>Director, IIT Roorkee</p>
+          </div>
+        </div>
+
+        <div class="speaker">
+          <img src="makarand_ghangrekar.jpg" alt="Dr. Makarand Ghangrekar">
+          <div class="speaker-info">
+            <h3>Dr. Makarand Ghangrekar</h3>
+            <p>Director, NIT Puducherry</p>
+          </div>
+        </div>
+
+        <div class="speaker">
+          <img src="deepak_pant.jpg" alt="Dr. Deepak Pant">
+          <div class="speaker-info">
+            <h3>Dr. Deepak Pant</h3>
+            <p>Senior Scientist, VITO, Belgium</p>
+          </div>
+        </div>
+
+        <div class="speaker">
+          <img src="aniruddha_pandit.jpg" alt="Prof. Aniruddha B. Pandit">
+          <div class="speaker-info">
+            <h3>Prof. Aniruddha B. Pandit</h3>
+            <p>Vice-Chancellor, ICT Mumbai</p>
+          </div>
+        </div>
+
+        <div class="speaker">
+          <img src="sameer_jadhav.jpg" alt="Dr. Sameer Jadhav">
+          <div class="speaker-info">
+            <h3>Dr. Sameer Jadhav</h3>
+            <p>Professor, IIT Bombay</p>
+          </div>
+        </div>
+
+        <div class="speaker">
+          <img src="anil_verma.jpg" alt="Prof. Anil Verma">
+          <div class="speaker-info">
+            <h3>Prof. Anil Verma</h3>
+            <p>Professor, IIT Delhi</p>
+          </div>
+        </div>
+
+        <div class="speaker">
+          <img src="sesha_talpa_sai.jpg" alt="Dr. P. Sesha Talpa Sai">
+          <div class="speaker-info">
+            <h3>Dr. P. Sesha Talpa Sai</h3>
+            <p>Professor, IIT Madras</p>
+          </div>
+        </div>
+
+        <div class="speaker">
+          <img src="shriram_sonawane.jpg" alt="Dr. Shriram Sonawane">
+          <div class="speaker-info">
+            <h3>Dr. Shriram Sonawane</h3>
+            <p>Professor, VNIT Nagpur</p>
+          </div>
+        </div>
+
+        <div class="speaker">
+          <img src="anand_kishor_kola.jpg" alt="Dr. Anand Kishor Kola">
+          <div class="speaker-info">
+            <h3>Dr. Anand Kishor Kola</h3>
+            <p>Professor, NIT Warangal</p>
+          </div>
+        </div>
+
+        <div class="speaker">
+          <img src="manish_vashishtha.jpg" alt="Dr. Manish Vashishtha">
+          <div class="speaker-info">
+            <h3>Dr. Manish Vashishtha</h3>
+            <p>Professor, MNIT Jaipur</p>
+          </div>
+        </div>
+
+        <div class="speaker">
+          <img src="sushil_kumar.jpg" alt="Dr. Sushil Kumar">
+          <div class="speaker-info">
+            <h3>Dr. Sushil Kumar</h3>
+            <p>Associate Professor, MNNIT Allahabad</p>
+          </div>
+        </div>
+
+        <div class="speaker">
+          <img src="sunil_patil.jpg" alt="Dr. Sunil A. Patil">
+          <div class="speaker-info">
+            <h3>Dr. Sunil A. Patil</h3>
+            <p>Associate Professor, IISER Mohali</p>
+          </div>
+        </div>
+
+        <div class="speaker">
+          <img src="deepak_jadhav.jpg" alt="Dr. Deepak Jadhav">
+          <div class="speaker-info">
+            <h3>Dr. Deepak Jadhav</h3>
+            <p>Eminent Scientist, KMOU, South Korea</p>
+          </div>
+        </div>
+
+        <div class="speaker">
+          <img src="parag_sadgir.jpg" alt="Dr. Parag Sadgir">
+          <div class="speaker-info">
+            <h3>Dr. Parag Sadgir</h3>
+            <p>Professor, COEP Pune</p>
+          </div>
+        </div>
+
+        <div class="speaker">
+          <img src="hiren_rawal.jpg" alt="Dr. Hiren Rawal">
+          <div class="speaker-info">
+            <h3>Dr. Hiren Rawal</h3>
+            <p>Eminent Scientist, CSIR-CSMCRI, Bhavnagar</p>
+          </div>
+        </div>
+
+        <div class="speaker">
+          <img src="mahesh_dharne.jpg" alt="Mahesh S. Dharne">
+          <div class="speaker-info">
+            <h3>Mahesh S. Dharne</h3>
+            <p>Eminent Scientist, CSIR-NCL, Pune</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
 
   <footer class="footer">
-  <div class="footer-section">
-    <h2>Contact Us</h2>
-  </div>
-  <div class="footer-section-contact-grid">
-    <div class="contact-column">
-      <p><a href="mailto:akm@ched.svnit.ac.in ">Dr. A. K. Mungray</a><br>+91261-2201605 </p>
-      <p><a href="mailto:vnl@ched.svnit.ac.in">Dr. V. N. Lad</a><br>+91261-2201684</p>
-      <p><a href="mailto:bag@ched.svnit.ac.in ">Dr. Alka A. Mungray</a><br>+91261-2201716</p>
+    <div class="footer-section">
+      <h2>Contact Us</h2>
     </div>
-    <div class="contact-column">
-      <p><a href="mailto:mch@ched.svnit.ac.in ">Dr. Mausumi Chakroborty</a><br>+91261-2201610</p>
-      <p><a href="mailto:jogendersingh@ched.svnit.ac.in ">Dr. Jogender Singh</a><br>+91-8287505262</p>
-      <!-- <p><a href="mailto:sneha@example.com">Dr. Sneha Rao</a><br>+91-6789012345</p> -->
+    <div class="footer-section-contact-grid">
+      <div class="contact-column">
+        <p><a href="mailto:akm@ched.svnit.ac.in"><i class="fas fa-envelope"></i> Dr. A. K. Mungray</a><br><i class="fas fa-phone"></i> +91261-2201605</p>
+        <p><a href="mailto:vnl@ched.svnit.ac.in"><i class="fas fa-envelope"></i> Dr. V. N. Lad</a><br><i class="fas fa-phone"></i> +91261-2201684</p>
+        <p><a href="mailto:bag@ched.svnit.ac.in"><i class="fas fa-envelope"></i> Dr. Alka A. Mungray</a><br><i class="fas fa-phone"></i> +91261-2201716</p>
+      </div>
+      <div class="contact-column">
+        <p><a href="mailto:mch@ched.svnit.ac.in"><i class="fas fa-envelope"></i> Dr. Mausumi Chakroborty</a><br><i class="fas fa-phone"></i> +91261-2201610</p>
+        <p><a href="mailto:jogendersingh@ched.svnit.ac.in"><i class="fas fa-envelope"></i> Dr. Jogender Singh</a><br><i class="fas fa-phone"></i> +91-8287505262</p>
+      </div>
     </div>
-  </div>
-</footer>
+    <div class="copyright">
+      &copy; 2025 ASREEM-2026 Conference. All Rights Reserved.
+    </div>
+  </footer>
+
+  <script>
+    // Navbar scroll effect
+    window.addEventListener('scroll', function() {
+      const navBar = document.querySelector('.nav-bar');
+      if (window.scrollY > 50) {
+        navBar.classList.add('scrolled');
+      } else {
+        navBar.classList.remove('scrolled');
+      }
+    });
+    
+    // Scroll reveal animation
+    function reveal() {
+      const reveals = document.querySelectorAll('.reveal');
+      
+      for (let i = 0; i < reveals.length; i++) {
+        const windowHeight = window.innerHeight;
+        const elementTop = reveals[i].getBoundingClientRect().top;
+        const elementVisible = 150;
+        
+        if (elementTop < windowHeight - elementVisible) {
+          reveals[i].classList.add('active');
+        } else {
+          reveals[i].classList.remove('active');
+        }
+      }
+    }
+    
+    window.addEventListener('scroll', reveal);
+    
+    // Initialize to check position on page load
+    reveal();
+  </script>
 </body>
 </html>

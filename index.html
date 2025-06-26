@@ -3,326 +3,1049 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>ASREEM - 2021</title>
-  <link href="style.css" rel="stylesheet">
+  <title>ASREEM - 2026 | Sustainable Research Conference</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&family=Playfair+Display:wght@400;500;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
   <style>
-   
-
-header{height:100vh}
-    
-    
-    header h2 {
-      font-size: 18px;
-      margin-bottom: 5px;
+    :root {
+      --primary: #2e7d32;
+      --primary-dark: #1b5e20;
+      --primary-light: #66bb6a;
+      --secondary: #004d40;
+      --accent: #ff5722;
+      --light: #f5f5f5;
+      --dark: #212121;
+      --gray: #757575;
+      --white: #ffffff;
+      --shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+      --transition: all 0.3s ease;
     }
     
-
-    .section {
-      padding: 30px 20px;
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
     }
-    .highlight {
-      background-color: #004d40;
-      color: white;
-      padding: 20px;
+    
+    body {
+      font-family: 'Poppins', sans-serif;
+      color: var(--dark);
+      line-height: 1.6;
+      overflow-x: hidden;
+      background-color: var(--light);
+    }
+    
+    h1{
+      font-family: 'Playfair Display', serif;
+      font-weight: 600;
+      /* color: var(--primary-dark); */
+    }
+    h2, h3, h4 {
+      font-family: 'Playfair Display', serif;
+      font-weight: 600;
+      color: var(--primary-dark);
+    }
+    
+    a {
+      text-decoration: none;
+      color: inherit;
+      transition: var(--transition);
+    }
+    
+    /* Header & Navigation */
+    header {
+      height: 100vh;
+      position: relative;
+      overflow: hidden;
+      background: linear-gradient(135deg, rgba(46, 125, 50, 0.9) 0%, rgba(0, 77, 64, 0.9) 100%);
+      color: var(--white);
+    }
+    
+    .nav-bar {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      padding: 1.5rem 5%;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      background-color: rgba(255, 255, 255, 0.95);
+      box-shadow: var(--shadow);
+      z-index: 1000;
+      transition: var(--transition);
+    }
+    
+    .nav-bar.scrolled {
+      padding: 1rem 5%;
+      background-color: rgba(255, 255, 255, 0.98);
+    }
+    
+    .nav-bar a {
+      margin: 0 1rem;
+      padding: 0.5rem 1rem;
+      font-weight: 500;
+      color: var(--dark);
+      border-radius: 4px;
+      transition: var(--transition);
+    }
+    
+    .nav-bar a:hover {
+      color: var(--primary);
+      transform: translateY(-2px);
+    }
+    
+    .nav-bar a.active {
+      background-color: var(--primary);
+      color: var(--white);
+    }
+    
+    /* Dropdown Menu */
+    .dropdown {
+      position: relative;
+      display: inline-block;
+    }
+    
+    .dropdown-content {
+      display: none;
+      position: absolute;
+      background-color: var(--white);
+      min-width: 200px;
+      box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
+      z-index: 1;
+      border-radius: 4px;
+      right: 0;
+    }
+    
+    .dropdown-content a {
+      color: var(--dark);
+      padding: 12px 16px;
+      text-decoration: none;
+      display: block;
+      text-align: left;
+    }
+    
+    .dropdown-content a:hover {
+      background-color: rgba(46, 125, 50, 0.1);
+    }
+    
+    .dropdown:hover .dropdown-content {
+      display: block;
+    }
+    
+    .dropdown-btn {
+      cursor: pointer;
+      margin: 0 1rem;
+      padding: 0.5rem 1rem;
+      font-weight: 500;
+      color: var(--dark);
+      border-radius: 4px;
+      transition: var(--transition);
+    }
+    
+    .dropdown-btn:hover {
+      color: var(--primary);
+      transform: translateY(-2px);
+    }
+    
+    .dropdown-btn i {
+      margin-left: 5px;
+    }
+    
+    /* Hero Section */
+    .intro-header {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      height: 100vh;
+      gap: 3rem;
+      padding: 0 5%;
+      opacity: 0;
+      transform: translateY(20px);
+      animation: fadeInUp 1s ease forwards 0.3s;
+    }
+    
+    .intro-text {
       text-align: center;
-      font-size: 18px;
+      max-width: 800px;
+      z-index: 2;
     }
+    
+    .intro-text h1 {
+      font-size: 2.8rem;
+      margin-bottom: 1rem;
+      line-height: 1.2;
+      text-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
+    }
+    
+    .intro-text h2 {
+      font-size: 1.8rem;
+      margin-bottom: 1.5rem;
+      color: rgba(255, 255, 255, 0.9);
+    }
+    
+    .intro-text p {
+      font-size: 1.2rem;
+      margin-bottom: 2rem;
+      color: rgba(255, 255, 255, 0.85);
+    }
+    
+    .logo {
+      height: 120px;
+      width: auto;
+      opacity: 0;
+      transform: scale(0.8);
+      transition: var(--transition);
+      animation: fadeInScale 1s ease forwards;
+      filter: drop-shadow(0 2px 4px rgba(0, 0, 0, 0.3));
+    }
+    
+    .logo:nth-child(1) {
+      animation-delay: 0.5s;
+    }
+    
+    .logo:nth-child(3) {
+      animation-delay: 0.7s;
+    }
+    
+    /* Carousel Section */
+    .carousel-section {
+      padding: 5rem 10%;
+      background-color: var(--white);
+    }
+    
+    .carousel-container {
+      max-width: 1200px;
+      margin: 0 auto;
+      position: relative;
+      overflow: hidden;
+      border-radius: 8px;
+      box-shadow: var(--shadow);
+    }
+    
+    .carousel {
+      display: flex;
+      transition: transform 0.5s ease;
+    }
+    
+    .carousel-slide {
+      min-width: 100%;
+      padding: 2rem;
+      text-align: center;
+      background-color: var(--light);
+    }
+    
+    .speaker-img {
+      width: 150px;
+      height: 150px;
+      border-radius: 50%;
+      object-fit: cover;
+      margin: 0 auto 1rem;
+      border: 5px solid var(--primary);
+    }
+    
+    .speaker-name {
+      font-size: 1.5rem;
+      margin-bottom: 0.5rem;
+      color: var(--primary-dark);
+    }
+    
+    .speaker-title {
+      font-size: 1rem;
+      color: var(--gray);
+      margin-bottom: 1rem;
+    }
+    
+    .speaker-bio {
+      max-width: 800px;
+      margin: 0 auto;
+    }
+    
+    .carousel-nav {
+      display: flex;
+      justify-content: center;
+      margin-top: 1rem;
+    }
+    
+    .carousel-dot {
+      width: 12px;
+      height: 12px;
+      border-radius: 50%;
+      background-color: var(--gray);
+      margin: 0 5px;
+      cursor: pointer;
+      transition: var(--transition);
+    }
+    
+    .carousel-dot.active {
+      background-color: var(--primary);
+    }
+    
+    /* Sections */
+    .section {
+      padding: 5rem 10%;
+      position: relative;
+    }
+    
     .section h2 {
-      font-size: 22px;
-      margin-bottom: 10px;
-    }
-    .section p {
-      font-size: 16px;
+      font-size: 2.2rem;
+      margin-bottom: 2rem;
+      text-align: center;
+      position: relative;
+      padding-bottom: 1rem;
     }
     
+    .section h2::after {
+      content: '';
+      position: absolute;
+      bottom: 0;
+      left: 50%;
+      transform: translateX(-50%);
+      width: 80px;
+      height: 3px;
+      background-color: var(--primary);
+    }
     
+    .highlight {
+      background-color: var(--secondary);
+      color: var(--white);
+      padding: 2.5rem;
+      text-align: center;
+      font-size: 1.2rem;
+      box-shadow: var(--shadow);
+      margin: 2rem 0;
+      position: relative;
+      overflow: hidden;
+    }
+    
+    .highlight::before {
+      content: '';
+      position: absolute;
+      top: -50%;
+      left: -50%;
+      width: 200%;
+      height: 200%;
+      background: linear-gradient(
+        to bottom right,
+        rgba(255, 255, 255, 0.1) 0%,
+        rgba(255, 255, 255, 0) 60%
+      );
+      transform: rotate(30deg);
+      animation: shine 3s infinite;
+    }
+    
+    .about_conf {
+      max-width: 1200px;
+      margin: 0 auto;
+    }
+    
+    /* Cards */
     .cards {
       display: flex;
-      justify-content: space-around;
-      padding: 20px;
+      justify-content: center;
+      flex-wrap: wrap;
+      gap: 2rem;
+      padding: 2rem 0;
     }
+    
     .card {
-      width: 30%;
+      flex: 1;
+      min-width: 280px;
+      max-width: 350px;
+      background: var(--white);
+      border-radius: 10px;
+      overflow: hidden;
+      box-shadow: var(--shadow);
+      transition: var(--transition);
+      transform: translateY(0);
+      opacity: 0;
+      animation: fadeInUp 0.8s ease forwards;
+    }
+    
+    .card:nth-child(1) { animation-delay: 0.2s; }
+    .card:nth-child(2) { animation-delay: 0.4s; }
+    .card:nth-child(3) { animation-delay: 0.6s; }
+    
+    .card:hover {
+      transform: translateY(-10px);
+      box-shadow: 0 10px 20px rgba(0, 0, 0, 0.15);
+    }
+    
+    .card img {
+      width: 100%;
+      height: 200px;
+      object-fit: cover;
+      transition: var(--transition);
+    }
+    
+    .card:hover img {
+      transform: scale(1.05);
+    }
+    
+    .card p {
+      padding: 1.5rem;
+      text-align: center;
+      font-weight: 500;
+      font-size: 1.1rem;
+      color: var(--primary-dark);
+    }
+    
+    /* Dates Section */
+    .dates {
+      background-color: var(--white);
+      text-align: center;
+      padding: 5rem 10%;
+      box-shadow: inset 0 0 20px rgba(0, 0, 0, 0.05);
+    }
+    
+    .dates-table-container {
+      display: flex;
+      justify-content: center;
+      padding: 2rem 0;
+      opacity: 0;
+      transform: translateY(20px);
+      animation: fadeInUp 0.8s ease forwards 0.4s;
+    }
+    
+    .dates-table {
+      width: 100%;
+      max-width: 800px;
+      border-collapse: collapse;
+      background-color: var(--white);
+      box-shadow: var(--shadow);
+      border-radius: 8px;
+      overflow: hidden;
+    }
+    
+    .dates-table tr {
+      transition: var(--transition);
+    }
+    
+    .dates-table tr:hover {
+      background-color: rgba(46, 125, 50, 0.05);
+    }
+    
+    .dates-table td {
+      padding: 1rem 1.5rem;
+      border: 1px solid rgba(0, 0, 0, 0.05);
+      text-align: left;
+    }
+    
+    .dates-table td:first-child {
+      font-weight: 500;
+    }
+    
+    .dates-table .highlight td {
+      background-color: var(--accent);
+      color: var(--white);
+      font-weight: 600;
       text-align: center;
     }
-    .card img {
-      width: 200px;
-      height: 200px;
-      margin-bottom: 10px;
-      border-radius: 10px;
-      border: solid rgb(160, 184, 173) 3px
-    }
-    .dates {
-  background-color: #eee;
-  text-align: center;
-  padding: 40px 20px;
-}
-
-.dates h2 {
-  margin-bottom: 20px;
-}
-
-.dates-table-container {
-  display: flex;
-  justify-content: center;
-}
-
-.dates-table {
-  width: 600px;
-  border-collapse: collapse;
-  background-color: white;
-  box-shadow: 0 2px 10px rgba(0,0,0,0.1);
-}
-
-.dates-table td {
-  padding: 12px 20px;
-  border: 1px solid #ccc;
-  text-align: left;
-}
-
-.dates-table .highlight td {
-  background-color: red;
-  color: white;
-  font-weight: bold;
-}
-
+    
+    /* About Sections */
     .about {
       display: flex;
-      padding: 30px 20px;
-      gap: 30px;width:80vw; margin: 0px 10vw
+      align-items: center;
+      gap: 3rem;
+      margin: 0 auto;
+      padding: 3rem 10%;
+      max-width: 1200px;
     }
+    
+    .about:nth-child(even) {
+      flex-direction: row-reverse;
+    }
+    
+    .about > div {
+      flex: 1;
+      min-width: 50%;
+    }
+    
     .about img {
-      width: 40%;
+      flex: 1;
+      min-width: 40%;
       height: auto;
       border-radius: 8px;
-      border: solid rgb(160, 184, 173) 3px;
+      box-shadow: var(--shadow);
+      transition: var(--transition);
+      opacity: 0;
+      transform: translateX(-20px);
     }
-   
-
-
-
-.footer {
-  background:linear-gradient(to right, #2e7d32, #66bb6a);
-  padding: 40px 20px;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-}
-
-.footer-section {
-  width: 100%;
-  max-width: 800px; /* Controls the total width of footer content */
-  
-}
-
-.footer-section h2 {
-  text-align: left;
-  margin-bottom: 20px;
-  font-size: 24px;
-  color: #ffffff;
-}
-
-.footer-section-contact-grid {
-  display: flex;
-  justify-content: space-between;
-  flex-wrap: wrap;
-  gap: 20px;
-  text-align: center;
-}
-
-.contact-column {
-  flex: 1;
-  min-width: 300px;
-}
-
-.contact-column p {
-  margin: 10px 0;
-  line-height: 1.6;
-}
-
-.contact-column a {
-  color: #ffffff;
-  text-decoration: none;
-}
-
-.contact-column a:hover {
-  text-decoration: underline;
-}
-
-
-
-
-  .about_conf { display: flex; width: 60vw; justify-content: center;margin: 0 auto; }
-
-  .intro{display: flex;  justify-content: center;margin: 0 auto;
-      
+    
+    .about:nth-child(even) img {
+      transform: translateX(20px);
+    }
+    
+    .about.animate img {
+      opacity: 1;
+      transform: translateX(0);
+    }
+    
+    .about h2 {
+      margin-bottom: 1.5rem;
+      text-align: left;
+    }
+    
+    .about p {
+      margin-bottom: 1rem;
+      color: var(--gray);
+    }
+    
+    /* Footer */
+    .footer {
+      background: linear-gradient(135deg, var(--primary-dark) 0%, var(--secondary) 100%);
+      padding: 4rem 10%;
+      display: flex;
       flex-direction: column;
       align-items: center;
-      text-align: center;
-      padding: 20px;
+      color: var(--white);
+      position: relative;
     }
-
-  
-.intro-header {
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  height: 100vh;
-  gap: 20px;
-}
-
-.intro-text {
-  text-align: center;
-  max-width: 80vw;
-}
-
-.logo {
-  height: 100px;
-  width: auto;
-}
-
-h2{display: flex;justify-content: center;}
-
-
+    
+    .footer::before {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background: url('https://www.transparenttextures.com/patterns/connected.png');
+      opacity: 0.1;
+      pointer-events: none;
+    }
+    
+    .footer-section {
+      width: 100%;
+      max-width: 1200px;
+      margin-bottom: 2rem;
+    }
+    
+    .footer-section h2 {
+      text-align: center;
+      margin-bottom: 2rem;
+      font-size: 2rem;
+      color: var(--white);
+      position: relative;
+      padding-bottom: 1rem;
+    }
+    
+    .footer-section h2::after {
+      content: '';
+      position: absolute;
+      bottom: 0;
+      left: 50%;
+      transform: translateX(-50%);
+      width: 80px;
+      height: 3px;
+      background-color: var(--white);
+    }
+    
+    .footer-section-contact-grid {
+      display: flex;
+      justify-content: space-between;
+      flex-wrap: wrap;
+      gap: 2rem;
+    }
+    
+    .contact-column {
+      flex: 1;
+      min-width: 300px;
+    }
+    
+    .contact-column p {
+      margin: 1rem 0;
+      line-height: 1.8;
+      display: flex;
+      align-items: center;
+    }
+    
+    .contact-column i {
+      margin-right: 1rem;
+      font-size: 1.2rem;
+      color: rgba(255, 255, 255, 0.8);
+    }
+    
+    .contact-column a {
+      color: var(--white);
+      transition: var(--transition);
+      display: flex;
+      align-items: center;
+    }
+    
+    .contact-column a:hover {
+      color: var(--accent);
+      transform: translateX(5px);
+    }
+    
+    .copyright {
+      margin-top: 3rem;
+      text-align: center;
+      font-size: 0.9rem;
+      color: rgba(255, 255, 255, 0.7);
+    }
+    
+    /* Animations */
+    @keyframes fadeInUp {
+      from {
+        opacity: 0;
+        transform: translateY(20px);
+      }
+      to {
+        opacity: 1;
+        transform: translateY(0);
+      }
+    }
+    
+    @keyframes fadeInScale {
+      from {
+        opacity: 0;
+        transform: scale(0.8);
+      }
+      to {
+        opacity: 1;
+        transform: scale(1);
+      }
+    }
+    
+    @keyframes shine {
+      to {
+        transform: translateX(100%) rotate(30deg);
+      }
+    }
+    
+    /* Responsive Design */
+    @media (max-width: 1024px) {
+      .intro-header {
+        flex-direction: column;
+        gap: 2rem;
+        text-align: center;
+      }
+      
+      .logo {
+        height: 80px;
+      }
+      
+      .intro-text h1 {
+        font-size: 2.2rem;
+      }
+      
+      .intro-text h2 {
+        font-size: 1.4rem;
+      }
+      
+      .about {
+        flex-direction: column;
+      }
+      
+      .about:nth-child(even) {
+        flex-direction: column;
+      }
+      
+      .about img {
+        width: 100%;
+        max-width: 600px;
+        margin: 0 auto;
+      }
+    }
+    
+    @media (max-width: 768px) {
+      .nav-bar {
+        flex-wrap: wrap;
+        padding: 1rem 5%;
+      }
+      
+      .nav-bar a, .dropdown-btn {
+        margin: 0.3rem;
+        padding: 0.3rem 0.6rem;
+        font-size: 0.9rem;
+      }
+      
+      .section {
+        padding: 3rem 5%;
+      }
+      
+      .intro-text h1 {
+        font-size: 1.8rem;
+      }
+      
+      .dates-table td {
+        padding: 0.8rem;
+        font-size: 0.9rem;
+      }
+      
+      .dropdown-content {
+        right: auto;
+        left: 0;
+      }
+    }
+    
+    @media (max-width: 480px) {
+      .intro-text h1 {
+        font-size: 1.5rem;
+      }
+      
+      .intro-text h2 {
+        font-size: 1.2rem;
+      }
+      
+      .logo {
+        height: 60px;
+      }
+      
+      .section h2 {
+        font-size: 1.8rem;
+      }
+      
+      .card {
+        min-width: 100%;
+      }
+      
+      .dates-table {
+        font-size: 0.8rem;
+      }
+      
+      .speaker-img {
+        width: 120px;
+        height: 120px;
+      }
+    }
+    
+    /* Scroll Reveal Animation */
+    .reveal {
+      position: relative;
+      opacity: 0;
+      transition: all 1s ease;
+    }
+    
+    .reveal.active {
+      opacity: 1;
+    }
+    
+    .active.fade-bottom {
+      animation: fade-bottom 1s ease-in;
+    }
+    
+    .active.fade-left {
+      animation: fade-left 1s ease-in;
+    }
+    
+    .active.fade-right {
+      animation: fade-right 1s ease-in;
+    }
+    
+    @keyframes fade-bottom {
+      0% {
+        transform: translateY(50px);
+        opacity: 0;
+      }
+      100% {
+        transform: translateY(0);
+        opacity: 1;
+      }
+    }
+    
+    @keyframes fade-left {
+      0% {
+        transform: translateX(-100px);
+        opacity: 0;
+      }
+      100% {
+        transform: translateX(0);
+        opacity: 1;
+      }
+    }
+    
+    @keyframes fade-right {
+      0% {
+        transform: translateX(100px);
+        opacity: 0;
+      }
+      100% {
+        transform: translateX(0);
+        opacity: 1;
+      }
+    }
   </style>
 </head>
 <body>
 
-
-
-    <header>
-
-      <nav class="nav-bar">
-        <a href="index.html">Home</a>
-        <a href="keynote.html">Keynote Speakers</a>
-        <a href="abstracts.html">Call for Abstracts</a>
-        <a href="dates_fees.html">Dates and Fees</a>
-        <a href="register.html">Register</a>
-        <a href="#">Publications</a>
-        <a href="organizing.html">Organizing Committee</a>
-        <a href="National_Advisory.html">National Advisory</a>
-        <a href="international.html">International Advisory</a>
-      </nav>
-
-      
-      <div class="intro-header">
-  <img src="aseem logo.png" alt="ASREEM Logo" class="logo">
-  <div class="intro-text">
-    <h1>International Conference on<br>Advances in Sustainable Research<br>for Energy and Environmental <br>Management</h1>
-    <h2>(ASREEM-2026)</h2>
-    <p>February 06 - 08th, 2026</p>
-  </div>
-  <img src="SVNIT-Surat-Logo.webp" alt="SVNIT Logo" class="logo">
-</div>
-
-
+  <header>
+    <nav class="nav-bar">
+      <a href="index.html" class="active">Home</a>
+      <a href="keynote.html">Keynote Speakers</a>
+      <a href="abstracts.html">Call for Abstracts</a>
+      <a href="dates_fees.html">Dates and Fees</a>
+      <div class="dropdown">
+        <div class="dropdown-btn">More <i class="fas fa-chevron-down"></i></div>
+        <div class="dropdown-content">
+          <a href="register.html">Register</a>
+          <a href="#">Publications</a>
+          <a href="organizing.html">Organizing Committee</a>
+          <a href="National_Advisory.html">National Advisory</a>
+          <a href="international.html">International Advisory</a>
+        </div>
+      </div>
+    </nav>
+    
+    <div class="intro-header">
+      <img src="aseem logo.png" alt="ASREEM Logo" class="logo">
+      <div class="intro-text">
+        <h1>International Conference on<br>Advances in Sustainable Research<br>for Energy and Environmental <br>Management</h1>
+        <h2>(ASREEM-2026)</h2>
+        <p>February 06 - 08th, 2026</p>
+      </div>
+      <img src="SVNIT-Surat-Logo.webp" alt="SVNIT Logo" class="logo">
+    </div>
   </header>
 
   <section class="section highlight">
     <strong>Important Guidelines for Manuscript Submission</strong>
   </section>
+  
   <div class="about_conf">
-  <section class="section">
-    <h2>About the Conference</h2>
-    <h3>Welcome to ASREEM-2026!</h3>
-    <p>The fast depleting natural resources intensify the need for new sustainable energy resources. If you are actively taking part in building new opportunities in the field of Energy and Environment then please consider joining the platform of ASREEM-2021!
-
-    This conference invites people from different walks of life, who share a common vision towards the implementation of sustainable processes for the management of environmental hazards. It will provide a platform for discussion on issues that are prevalent in the field of applied energy and environmental research. The focus will be on the research studies and findings that can have a ‘Lab to Field’ approach. We believe that the findings of research studies should be motivated to go for a market application. This can solve the day-to-day problems that are faced by people of industrial background, wastewater treatment managers, energy suppliers, environmental activists etc. The problems that are haunting the future of our existence and survival need serious consideration.
-
-    This will be a virtual conference held at the Chemical Engineering Department, SVNIT, Surat, Gujarat. The organisers are working in the field of the ‘Energy and Environmental Management’ sector for the past decade. They share a common thought process for the development of ‘solution-oriented research’. The conference is organised to gather like-minded people of academic and industrial origin who can share their views regarding advances in sustainable research for energy and environmental management.</p>
-  </section>
+    <section class="section reveal fade-bottom">
+      <h2>About the Conference</h2>
+      <h3>Welcome to ASREEM-2026!</h3>
+      <p>The fast depleting natural resources intensify the need for new sustainable energy resources. If you are actively taking part in building new opportunities in the field of Energy and Environment then please consider joining the platform of ASREEM-2026!</p>
+      <p>This conference invites people from different walks of life, who share a common vision towards the implementation of sustainable processes for the management of environmental hazards. It will provide a platform for discussion on issues that are prevalent in the field of applied energy and environmental research. The focus will be on the research studies and findings that can have a 'Lab to Field' approach. We believe that the findings of research studies should be motivated to go for a market application. This can solve the day-to-day problems that are faced by people of industrial background, wastewater treatment managers, energy suppliers, environmental activists etc. The problems that are haunting the future of our existence and survival need serious consideration.</p>
+      <p>This will be a virtual conference held at the Chemical Engineering Department, SVNIT, Surat, Gujarat. The organisers are working in the field of the 'Energy and Environmental Management' sector for the past decade. They share a common thought process for the development of 'solution-oriented research'. The conference is organised to gather like-minded people of academic and industrial origin who can share their views regarding advances in sustainable research for energy and environmental management.</p>
+    </section>
   </div>
 
-  <!-- <section class="keynote">
+  <!-- Keynote Speakers Carousel -->
+  <section class="carousel-section reveal fade-bottom">
     <h2>Keynote Speakers</h2>
-    <img src="speaker.jpg" alt="Dr. Sage R. Hilbel">
-    <p><strong>Dr. Sage R. Hilbel</strong><br>Professor, Univ. of Advanced Engg.</p>
-  </section> -->
+    <div class="carousel-container">
+      <div class="carousel">
+        <div class="carousel-slide">
+          <img src="https://randomuser.me/api/portraits/men/32.jpg" alt="Speaker 1" class="speaker-img">
+          <h3 class="speaker-name">Dr. John Smith</h3>
+          <p class="speaker-title">Professor of Environmental Science, Harvard University</p>
+          <p class="speaker-bio">Dr. Smith is a leading expert in sustainable energy solutions with over 20 years of experience in renewable energy research and policy development.</p>
+        </div>
+        <div class="carousel-slide">
+          <img src="https://randomuser.me/api/portraits/women/44.jpg" alt="Speaker 2" class="speaker-img">
+          <h3 class="speaker-name">Dr. Sarah Johnson</h3>
+          <p class="speaker-title">Director, International Energy Research Center</p>
+          <p class="speaker-bio">Dr. Johnson specializes in energy efficiency technologies and has published over 100 papers on sustainable urban development.</p>
+        </div>
+        <div class="carousel-slide">
+          <img src="https://randomuser.me/api/portraits/men/75.jpg" alt="Speaker 3" class="speaker-img">
+          <h3 class="speaker-name">Dr. Michael Chen</h3>
+          <p class="speaker-title">Chief Scientist, GreenTech Innovations</p>
+          <p class="speaker-bio">Dr. Chen is a pioneer in carbon capture technologies and has developed several patented processes for industrial emissions reduction.</p>
+        </div>
+        <div class="carousel-slide">
+          <img src="https://randomuser.me/api/portraits/women/68.jpg" alt="Speaker 4" class="speaker-img">
+          <h3 class="speaker-name">Dr. Emily Rodriguez</h3>
+          <p class="speaker-title">Head of Sustainability, United Nations Environment Programme</p>
+          <p class="speaker-bio">Dr. Rodriguez leads global initiatives for sustainable development and environmental policy implementation across 150 countries.</p>
+        </div>
+      </div>
+    </div>
+    <div class="carousel-nav">
+      <div class="carousel-dot active" data-index="0"></div>
+      <div class="carousel-dot" data-index="1"></div>
+      <div class="carousel-dot" data-index="2"></div>
+      <div class="carousel-dot" data-index="3"></div>
+    </div>
+  </section>
 
-  <section class="section">
+  <section class="section reveal fade-bottom">
     <h2>Registration</h2>
     <div class="cards">
       <div class="card">
-        <img src="author.png" alt="Author" >
-        <p>Author</p>
+        <img src="author.png" alt="Author">
+        <p>Author Registration</p>
       </div>
       <div class="card">
         <img src="presenter.png" alt="Presenter">
-        <p>Presenter</p>
+        <p>Presenter Registration</p>
       </div>
       <div class="card">
         <img src="listener.jpg" alt="Listener">
-        <p>Listener</p>
+        <p>Listener Registration</p>
       </div>
     </div>
   </section>
 
-  <section class="dates">
-  <h2>Important Dates</h2>
-  <div class="dates-table-container">
-    <table class="dates-table">
-      <tr>
-        <td>Notification of Acceptance</td>
-        <td>July 05, 2021</td>
-      </tr>
-      <tr class="highlight">
-        <td>Fee Payment Deadline</td>
-        <td>July 10, 2021</td>
-      </tr>
-      <tr>
-        <td>Last Date of Abstract Submission</td>
-        <td>30 September 2025</td>
-      </tr>
-      <tr>
-        <td>Last Date of Registration</td>
-        <td>15 December 2025</td>
-      </tr>
-      <tr>
-        <td>Conference Dates</td>
-        <td>February 6–8, 2026</td>
-      </tr>
-    </table>
-  </div>
-</section>
+  <section class="dates reveal fade-bottom">
+    <h2>Important Dates</h2>
+    <div class="dates-table-container">
+      <table class="dates-table">
+        <tr>
+          <td>Notification of Acceptance</td>
+          <td>July 05, 2025</td>
+        </tr>
+        <tr class="dates-table">
+          <td style="color:red">Fee Payment Deadline</td>
+          <td style="color:red"> July 10, 2025 </td>
+        </tr>
+        <tr>
+          <td>Last Date of Abstract Submission</td>
+          <td>30 September 2025</td>
+        </tr>
+        <tr>
+          <td>Last Date of Registration</td>
+          <td>15 December 2025</td>
+        </tr>
+        <tr>
+          <td>Conference Dates</td>
+          <td>February 6–8, 2026</td>
+        </tr>
+      </table>
+    </div>
+  </section>
 
-
-  <section class="about">
+  <section class="about reveal fade-left">
     <div>
       <h2>About SVNIT</h2>
-      <p>Sardar Vallabhbhai National Institute of Technology, Surat known as SVNIT - Surat was set up with the objective to provide high quality technical education to meet the needs of the Nation in the present competitive world. This Institute was established in 1961 for imparting technical education in Chemical, Civil, Mechanical and Electrical Engineering.
-
-The UG program in Chemical Engineering started in the year 1995-96. In exercise of the powers conferred by section 3 of the University Grants Commission (UGC) Act, 1956, the Central Government, on the advice of the University Grants Commission, has declared the Sardar Vallabhbhai Regional College of Engineering & Technology (SVREC), Surat as Sardar Vallabhbhai National Institute of Technology (SVNIT), Surat with status of “Deemed University” with effect from 4th December 2002. 
-
-The Institute has been granted the status of ‘Institute of National Importance’ w.e.f. Aug.15, 2007.</p>
+      <p>Sardar Vallabhbhai National Institute of Technology, Surat known as SVNIT - Surat was set up with the objective to provide high quality technical education to meet the needs of the Nation in the present competitive world. This Institute was established in 1961 for imparting technical education in Chemical, Civil, Mechanical and Electrical Engineering.</p>
+      <p>The UG program in Chemical Engineering started in the year 1995-96. In exercise of the powers conferred by section 3 of the University Grants Commission (UGC) Act, 1956, the Central Government, on the advice of the University Grants Commission, has declared the Sardar Vallabhbhai Regional College of Engineering & Technology (SVREC), Surat as Sardar Vallabhbhai National Institute of Technology (SVNIT), Surat with status of "Deemed University" with effect from 4th December 2002.</p>
+      <p>The Institute has been granted the status of 'Institute of National Importance' w.e.f. Aug.15, 2007.</p>
     </div>
     <img src="SVNIT_main_gate.webp" alt="SVNIT">
   </section>
 
-  <section class="about">
+  <section class="about reveal fade-right">
     <div>
       <h2>About ChED, SVNIT</h2>
-      <p>The Chemical Engineering Department of Sardar Vallabhbhai National Institute of Technology, Surat was started in 1995-96. As a separate Department, its potential has been recognized as a rich resource of well trained Chemical Engineers. It is today one of the premier Departments of this college. The Department has built up a comprehensive research infrastructure with top-notch facilities for carrying cutting-edge teaching and research. Constant efforts are being put up to make this department to be ranked as one of the best in India within the next few years. The Department strives to provide graduate students with facilities and an environment that are conducive for creative and dynamic work. Chemical Engineering is the most sought after branch in the state of Gujarat.</p>
+      <p>The Chemical Engineering Department of Sardar Vallabhbhai National Institute of Technology, Surat was started in 1995-96. As a separate Department, its potential has been recognized as a rich resource of well trained Chemical Engineers. It is today one of the premier Departments of this college. The Department has built up a comprehensive research infrastructure with top-notch facilities for carrying cutting-edge teaching and research.</p>
+      <p>Constant efforts are being put up to make this department to be ranked as one of the best in India within the next few years. The Department strives to provide graduate students with facilities and an environment that are conducive for creative and dynamic work. Chemical Engineering is the most sought after branch in the state of Gujarat.</p>
     </div>
     <img src="department.jpg" alt="ChED">
   </section>
 
   <footer class="footer">
-  <div class="footer-section">
-    <h2>Contact Us</h2>
-  </div>
-  <div class="footer-section-contact-grid">
-    <div class="contact-column">
-      <p><a href="mailto:akm@ched.svnit.ac.in ">Dr. A. K. Mungray</a><br>+91261-2201605 </p>
-      <p><a href="mailto:vnl@ched.svnit.ac.in">Dr. V. N. Lad</a><br>+91261-2201684</p>
-      <p><a href="mailto:bag@ched.svnit.ac.in ">Dr. Alka A. Mungray</a><br>+91261-2201716</p>
+    <div class="footer-section">
+      <h2>Contact Us</h2>
     </div>
-    <div class="contact-column">
-      <p><a href="mailto:mch@ched.svnit.ac.in ">Dr. Mausumi Chakroborty</a><br>+91261-2201610</p>
-      <p><a href="mailto:jogendersingh@ched.svnit.ac.in ">Dr. Jogender Singh</a><br>+91-8287505262</p>
-      <!-- <p><a href="mailto:sneha@example.com">Dr. Sneha Rao</a><br>+91-6789012345</p> -->
+    <div class="footer-section-contact-grid">
+      <div class="contact-column">
+        <p><a href="mailto:akm@ched.svnit.ac.in"><i class="fas fa-envelope"></i> Dr. A. K. Mungray</a><br><i class="fas fa-phone"></i> +91261-2201605</p>
+        <p><a href="mailto:vnl@ched.svnit.ac.in"><i class="fas fa-envelope"></i> Dr. V. N. Lad</a><br><i class="fas fa-phone"></i> +91261-2201684</p>
+        <p><a href="mailto:bag@ched.svnit.ac.in"><i class="fas fa-envelope"></i> Dr. Alka A. Mungray</a><br><i class="fas fa-phone"></i> +91261-2201716</p>
+      </div>
+      <div class="contact-column">
+        <p><a href="mailto:mch@ched.svnit.ac.in"><i class="fas fa-envelope"></i> Dr. Mausumi Chakroborty</a><br><i class="fas fa-phone"></i> +91261-2201610</p>
+        <p><a href="mailto:jogendersingh@ched.svnit.ac.in"><i class="fas fa-envelope"></i> Dr. Jogender Singh</a><br><i class="fas fa-phone"></i> +91-8287505262</p>
+      </div>
     </div>
-  </div>
-</footer>
+    <div class="copyright">
+      &copy; 2025 ASREEM-2026 Conference. All Rights Reserved.
+    </div>
+  </footer>
 
+  <script>
+    // Navbar scroll effect
+    window.addEventListener('scroll', function() {
+      const navBar = document.querySelector('.nav-bar');
+      if (window.scrollY > 50) {
+        navBar.classList.add('scrolled');
+      } else {
+        navBar.classList.remove('scrolled');
+      }
+    });
+    
+    // Scroll reveal animation
+    function reveal() {
+      const reveals = document.querySelectorAll('.reveal');
+      
+      for (let i = 0; i < reveals.length; i++) {
+        const windowHeight = window.innerHeight;
+        const elementTop = reveals[i].getBoundingClientRect().top;
+        const elementVisible = 150;
+        
+        if (elementTop < windowHeight - elementVisible) {
+          reveals[i].classList.add('active');
+        } else {
+          reveals[i].classList.remove('active');
+        }
+      }
+    }
+    
+    window.addEventListener('scroll', reveal);
+    
+    // Initialize to check position on page load
+    reveal();
+    
+    // Animate about images when in view
+    function animateAboutImages() {
+      const aboutSections = document.querySelectorAll('.about');
+      
+      aboutSections.forEach(section => {
+        const sectionTop = section.getBoundingClientRect().top;
+        const windowHeight = window.innerHeight;
+        
+        if (sectionTop < windowHeight - 100) {
+          section.classList.add('animate');
+        }
+      });
+    }
+    
+    window.addEventListener('scroll', animateAboutImages);
+    animateAboutImages(); // Run on page load
+    
+    // Carousel functionality
+    let currentSlide = 0;
+    const slides = document.querySelectorAll('.carousel-slide');
+    const dots = document.querySelectorAll('.carousel-dot');
+    const carousel = document.querySelector('.carousel');
+    const slideCount = slides.length;
+    let slideInterval;
+    
+    function showSlide(index) {
+      if (index >= slideCount) {
+        currentSlide = 0;
+      } else if (index < 0) {
+        currentSlide = slideCount - 1;
+      } else {
+        currentSlide = index;
+      }
+      
+      carousel.style.transform = `translateX(-${currentSlide * 100}%)`;
+      
+      // Update dots
+      dots.forEach((dot, i) => {
+        dot.classList.toggle('active', i === currentSlide);
+      });
+    }
+    
+    function nextSlide() {
+      showSlide(currentSlide + 1);
+    }
+    
+    function startCarousel() {
+      slideInterval = setInterval(nextSlide, 2000); // Change slide every 5 seconds
+    }
+    
+    function stopCarousel() {
+      clearInterval(slideInterval);
+    }
+    
+    // Initialize carousel
+    function initCarousel() {
+      // Set up dot navigation
+      dots.forEach((dot, index) => {
+        dot.addEventListener('click', () => {
+          stopCarousel();
+          showSlide(index);
+          startCarousel();
+        });
+      });
+      
+      // Start auto-sliding
+      startCarousel();
+      
+      // Pause on hover
+      carousel.addEventListener('mouseenter', stopCarousel);
+      carousel.addEventListener('mouseleave', startCarousel);
+    }
+    
+    // Initialize when DOM is loaded
+    document.addEventListener('DOMContentLoaded', initCarousel);
+  </script>
 </body>
 </html>

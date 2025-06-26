@@ -14,19 +14,20 @@ header {
   background: linear-gradient(to right, #2e7d32, #66bb6a);
   color: white;
   padding: 10px ;
-  
+  width:100vw;
   height: 30vh; 
   display: flex;
   
   flex-direction: column;
-  gap:5vh
+  /* gap:5vh */
 }
 header h1 {display: flex;justify-content: center;
-      /* padding: 20px; */
-      font-size: 40px;
+      text-align: center;
+      /* font-size: 5vh; */
       /* margin:20px  10px 10px 10px; */
       color: #ffeb3b;text-shadow: 1px 1px 3px rgba(0,0,0,0.3);
       font-family: Verdana, Geneva, Tahoma, sans-serif;
+      
     }
 .nav-bar {
       /* background-color: #002855; */
